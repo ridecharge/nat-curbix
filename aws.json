@@ -1,0 +1,32 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": ""
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key` }}",
+      "region": "us-east-1",
+      "source_ami": "ami-aef88bc6",
+      "instance_type": "m3.medium",
+      "ssh_username": "ubuntu",
+      "ami_name": "nat-curbuntu {{timestamp}}"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "scripts/ha-nat.sh",
+      "destination": "/tmp/ha-nat.sh"
+    },
+    {
+      "type": "shell",
+      "start_retry_timeout": "10m",
+      "inline": [
+        "sudo mv /tmp/ha-nat.sh /usr/local/bin/ha-nat.sh"
+      ]
+    }
+  ]
+}
