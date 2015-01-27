@@ -9,23 +9,22 @@
       "access_key": "{{user `aws_access_key`}}",
       "secret_key": "{{user `aws_secret_key` }}",
       "region": "us-east-1",
-      "source_ami": "ami-70b7c918",
+      "source_ami": "ami-5e1b6336",
       "instance_type": "m3.medium",
       "ssh_username": "ubuntu",
-      "ami_name": "nat-curbuntu {{timestamp}}"
+      "ami_name": "nat-curbix Ubuntu 14.04.1 LTS {{timestamp}}"
     }
   ],
   "provisioners": [
     {
-      "type": "file",
-      "source": "scripts/ha-nat.sh",
-      "destination": "/tmp/ha-nat.sh"
+      "type": "ansible-local",
+      "playbook_file": "playbook.yml",
+      "role_paths": "roles/nat"
     },
-    {
+    {    
       "type": "shell",
-      "start_retry_timeout": "10m",
       "inline": [
-        "sudo mv /tmp/ha-nat.sh /usr/local/bin/ha-nat.sh"
+        "sudo docker pull sgarlick987/aws-startup-utils"
       ]
     }
   ]

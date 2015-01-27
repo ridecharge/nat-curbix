@@ -1,0 +1,5 @@
+# role dependencies
+---
+- src: git+git@github.com:ridecharge/nat-ansible-role.git
+  path: roles
+  name: nat
