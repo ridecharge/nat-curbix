@@ -6,26 +6,26 @@
   "builders": [
     {
       "type": "amazon-ebs",
-      "access_key": "{{user `aws_access_key`}}",
+      "access_key": "{{user `aws_access_key` }}",
       "secret_key": "{{user `aws_secret_key` }}",
       "region": "us-east-1",
-      "source_ami": "ami-5e1b6336",
+      "source_ami": "ami-86f5b5ee",
       "instance_type": "m3.medium",
       "ssh_username": "ubuntu",
       "ami_name": "nat-curbix Ubuntu 14.04.1 LTS {{timestamp}}"
     }
   ],
   "provisioners": [
-    {
-      "type": "ansible-local",
-      "playbook_file": "playbook.yml",
-      "role_paths": "roles/nat"
-    },
     {    
       "type": "shell",
       "inline": [
         "sudo docker pull sgarlick987/aws-startup-utils"
       ]
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "playbook.yml",
+      "role_paths": "roles/nat"
     }
   ]
 }
