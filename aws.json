@@ -6,10 +6,11 @@
   "builders": [
     {
       "type": "amazon-ebs",
+      "name": "ubuntu14lts",
       "access_key": "{{user `aws_access_key` }}",
       "secret_key": "{{user `aws_secret_key` }}",
       "region": "us-east-1",
-      "source_ami": "ami-4467682c",
+      "source_ami": "ami-24515f4c",
       "instance_type": "m3.medium",
       "ssh_username": "ubuntu",
       "ami_name": "nat-curbix Ubuntu 14.04.1 LTS {{timestamp}}"
