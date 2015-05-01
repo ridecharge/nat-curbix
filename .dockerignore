@@ -2,5 +2,4 @@
 requirements.yml
 Dockerfile
 .dockerignore
-Makefile
 .git
