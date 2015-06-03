@@ -1,5 +1,5 @@
 DOCKER_REPO?=registry.gocurb.internal:80
-CONTAINER=$(DOCKER_REPO)/jenkins-slave-curbix
+CONTAINER=$(DOCKER_REPO)/nat-curbix
 
 all: build run cleanup
 
